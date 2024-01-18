@@ -100,3 +100,13 @@ wget https://github.com/shenwei356/kmcp/releases/download/v0.9.4/kmcp_linux_amd6
 
 echo "export PATH=$(pwd):\${PATH}" >> ~/.bashrc
 ```
+
+## Download isolates
+
+Use the following query on [NCBI SRA](https://www.ncbi.nlm.nih.gov/sra) database,
+
+```
+pseudomonas AND isolates AND ("platform oxford nanopore"[Properties]) 
+```
+
+and export the summary as csv.
