@@ -47,9 +47,5 @@ datasets download genome taxon 286 --reference --filename pseudomonas_dataset.zi
 unzip pseudomonas_dataset.zip
 rm README.md pseudomonas_dataset.zip
 
-# Build Kraken2 custom database
-kraken2-build --download-taxonomy --db test
-for file in ncbi_dataset/data/*/*.fna; do kraken2-build --add-to-library $file --db test; done
-kraken2-build --build --db test
 
 # Download some isolates ONT reads
