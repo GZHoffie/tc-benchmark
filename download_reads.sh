@@ -1,7 +1,13 @@
 #!/bin/bash
 
 ## Download sra toolkit
-sudo apt-get install sra-toolkit
+mkdir -p tools
+cd tools
+wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.10/sratoolkit.3.0.10-ubuntu64.tar.gz
+tar -xvf sratoolkit.3.0.10-ubuntu64.tar.gz
+rm *.tar.gz
+echo "export PATH=\${PATH}:$(pwd)/sratoolkit.3.0.10-ubuntu64/bin" >> ~/.bashrc
+source ~/.bashrc
 
 ## Download reads using prefetch
 cd /mnt/c/Users/guzh/ # Download outside WSL as the size of files is large
