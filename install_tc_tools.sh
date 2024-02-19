@@ -46,6 +46,3 @@ cd tc-data
 datasets download genome taxon 286 --reference --filename pseudomonas_dataset.zip
 unzip pseudomonas_dataset.zip
 rm README.md pseudomonas_dataset.zip
-
-
-# Download some isolates ONT reads
