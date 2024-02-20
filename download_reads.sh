@@ -38,10 +38,27 @@ mkdir -p sampled_reads
 # Use NCBI esearch to get the tax ID of the read files
 sudo apt install ncbi-entrez-direct
 
-for sra_id in *
+for file in *.fastq
 do
+    sra_id="${file%%.*}"
     tax_id=$(esearch -db sra -query $sra_id | efetch -format runinfo | awk -F "," '{print $28}' | sed -n 2p)
-    head "./${sra_id}/${sra_id}.fastq" -n $(( NUM_SAMPLES_PER_FILE * 4 )) >> "./sampled_reads/${tax_id}.fastq"
+    head "./${sra_id}.fastq" -n $(( NUM_SAMPLES_PER_FILE * 4 )) >> "./sampled_reads/${tax_id}.fastq"
     echo "Sampled dataset ${sra_id} with Tax ID ${tax_id}."
+done
+
+
+# merge them all into one single fastq file
+for file in ./sampled_reads/*.fastq
+do
+    cat $file >> sampled_reads.fastq
+    base_name=$(basename $file)
+    sra_id="${base_name%%.*}"
+
+    line_count=$(wc -l < "$file")
+    repetitions=$((line_count / 4))
+
+    for ((i = 0; i < repetitions; i++)); do
+        echo "$sra_id" >> sampled_reads.label
+    done
 done
 
