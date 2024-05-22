@@ -4,3 +4,6 @@ reference_genome
 bac120_metadata.*
 data/
 pseudomonas_kraken2
+*.syldb
+*.tsv
+*.time
