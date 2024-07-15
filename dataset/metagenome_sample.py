@@ -102,4 +102,5 @@ if __name__ == "__main__":
     
     coverages = [0.008, 0.015, 0.0284, 0.0535, 0.101, 0.1902, 0.3585, 0.6757]
     for coverage in coverages:
-        g.generate_sample(glob.glob("./data/sensitivity_test_genomes/Staphylococcus aureus/*.fna"), "./data/sensitivity_test", "s_aureus_coverage_" + str(coverage), average_coverage=coverage)
+        #g.generate_sample(glob.glob("./data/sensitivity_test_genomes/*/*.fna"), "./data/sensitivity_test", "other_coverage_" + str(coverage), average_coverage=coverage)
+        g.generate_sample(glob.glob("./data/Escherichia coli/*.fna"), "./data/sensitivity_test", "e_coli_coverage_" + str(coverage), average_coverage=coverage)
