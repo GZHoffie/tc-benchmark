@@ -132,7 +132,10 @@ if __name__ == "__main__":
     #d.download_all_references(metadata_df, "/home/zhenhao/ETFMH/Other_data/", num_samples=10, level="family")
 
     # Randomly sample 100 species
-    metadata_df = metadata_df.dropna()
-    species_samples = random.sample(list(metadata_df["species_name"]), 100)
-    metadata_df = metadata_df[metadata_df["species_name"].isin(species_samples)]
-    d.download_all_references(metadata_df, "/home/zhenhao/tc-benchmark/data/sensitivity_test_genomes/", num_samples=1, level="species")
+    #metadata_df = metadata_df.dropna()
+    #species_samples = random.sample(list(metadata_df["species_name"]), 100)
+    #metadata_df = metadata_df[metadata_df["species_name"].isin(species_samples)]
+    #d.download_all_references(metadata_df, "/home/zhenhao/tc-benchmark/data/sensitivity_test_genomes/", num_samples=1, level="species")
+
+    metadata_df = metadata_df[metadata_df["genus_name"] == "Staphylococcus"]
+    d.download_all_references(metadata_df, "/home/zhenhao/tc-benchmark/data/Staphylococcus/", num_samples=50, level="species")
