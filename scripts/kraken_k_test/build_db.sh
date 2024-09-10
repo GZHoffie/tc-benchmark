@@ -12,7 +12,7 @@ mkdir -p $LOG_DIRECTORY
 mkdir -p $DB_DIRECTORY
 cd $DB_DIRECTORY
 
-BUILT_LIBRARY=true
+BUILT_LIBRARY=false
 
 # Build Kraken2 custom database
 for k in 35 31 27 23 19 15 
@@ -35,7 +35,7 @@ do
     mv ${NCBI_TAXONOMY_DIR}/taxonomy ${DB_NAME}_${k}/
 
     # Build the database
-    /usr/bin/time -o "${LOG_DIRECTORY}/kraken2_build_${k}.time" -v kraken2-build --kmer-len ${k} --minimizer-len $((k-4)) --minimizer-spaces $(((k-4)/5)) --threads 20 --build --db ${DB_NAME}_${k}
+    /usr/bin/time -o "${LOG_DIRECTORY}/kraken2_build_${k}.time" -v kraken2-build --kmer-len ${k} --minimizer-len $((k-4)) --minimizer-spaces 0 --threads 20 --build --db ${DB_NAME}_${k}
 
     # move the taxonomy file back
     mv ${DB_NAME}_${k}/taxonomy ${NCBI_TAXONOMY_DIR}/
