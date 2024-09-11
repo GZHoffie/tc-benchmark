@@ -37,7 +37,7 @@ class MetagenomicSampleGenerator:
             species_abundance = species_abundance / np.sum(species_abundance)
             species_abundance = np.sort(species_abundance)
         else:
-            species_abundance = np.ones(total_species_num) / len(total_species_num)
+            species_abundance = np.ones(total_species_num) / total_species_num
 
 
         # Assign pathogens the lowest abundance
@@ -100,7 +100,12 @@ if __name__ == "__main__":
     #print(glob.glob("./data_temp/*/*.fna"))
     #g.generate_sample(glob.glob("./single_species/*/*.fna"), 100000, "./", "EColi")
     
-    coverages = [0.008, 0.015, 0.0284, 0.0535, 0.101, 0.1902, 0.3585, 0.6757]
-    for coverage in coverages:
+    #coverages = [0.008, 0.015, 0.0284, 0.0535, 0.101, 0.1902, 0.3585, 0.6757]
+    #for coverage in coverages:
         #g.generate_sample(glob.glob("./data/sensitivity_test_genomes/*/*.fna"), "./data/sensitivity_test", "other_coverage_" + str(coverage), average_coverage=coverage)
-        g.generate_sample(glob.glob("./data/Escherichia coli/*.fna"), "./data/sensitivity_test", "e_coli_coverage_" + str(coverage), average_coverage=coverage)
+    #    g.generate_sample(glob.glob("./data/Escherichia coli/*.fna"), "./data/sensitivity_test", "e_coli_coverage_" + str(coverage), average_coverage=coverage)
+
+    #for file in glob.glob("./data/sampled_genomes/*.fna"):
+    #    g.generate_sample([file], "strain_identification_test", Path(file).stem, average_coverage=1)
+    
+    g.generate_sample(glob.glob("./data/sampled_genomes/*.fna"), "strain_identification_test", "all", total_read_num=100000, distribution="uniform")
