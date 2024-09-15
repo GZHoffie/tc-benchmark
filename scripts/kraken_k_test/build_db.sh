@@ -1,5 +1,5 @@
 # This script build the database for each tool
-DB_NAME=test_db
+DB_NAME=zymo_db
 FASTA_FILES=/mnt/c/Users/zhenh/tax_data_split/*/train/*/*.fna
 LOG_DIRECTORY=/mnt/c/Users/zhenh/tax_db/log
 DB_DIRECTORY=/mnt/c/Users/zhenh/tax_db

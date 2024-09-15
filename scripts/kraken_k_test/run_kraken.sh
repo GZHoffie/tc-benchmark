@@ -1,4 +1,4 @@
-benchmark_dir=/mnt/c/Users/zhenh/kraken2_benchmark1
+benchmark_dir=/mnt/c/Users/zhenh/kraken2_benchmark2
 
 QUERY_FILES=(/mnt/c/Users/zhenh/tax_reads/train_reads.fastq
              /mnt/c/Users/zhenh/tax_reads/ood_species_reads.fastq
@@ -6,7 +6,7 @@ QUERY_FILES=(/mnt/c/Users/zhenh/tax_reads/train_reads.fastq
              /home/zhenhao/htc/data/zymo_test_reads/negative.fastq
              /home/zhenhao/htc/data/human_reads.fastq)
 KRAKEN_DB_DIR=/mnt/c/Users/zhenh/tax_db/
-KRAKEN_DB_NAMES=(test_db_35 test_db_31 test_db_27 test_db_23 test_db_19 test_db_15)
+KRAKEN_DB_NAMES=(zymo_db_35 zymo_db_31 zymo_db_27 zymo_db_23 zymo_db_19 zymo_db_15)
 
 mkdir -p ${benchmark_dir}
 mkdir -p ${benchmark_dir}/log

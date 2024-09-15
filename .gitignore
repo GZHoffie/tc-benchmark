@@ -7,3 +7,4 @@ pseudomonas_kraken2
 *.syldb
 *.tsv
 *.time
+__pycache__/
