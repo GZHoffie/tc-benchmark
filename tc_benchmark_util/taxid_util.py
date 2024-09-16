@@ -3,7 +3,6 @@ from collections import Counter
 from ete3 import NCBITaxa
 from functools import lru_cache
 
-
 @lru_cache(maxsize=10000)
 def get_level(ID, rank='genus'):
     """
@@ -28,7 +27,7 @@ def get_level(ID, rank='genus'):
     #print(ranks)
     for i in ranks:
         if ranks[i] == rank:
-            return i
+            return int(i)
         
     return None
 
@@ -46,6 +45,12 @@ def accession_to_taxid(metadata_df, accession):
         return None
     
 def check_equivalence(taxid1, taxid2, rank='species'):
+    if taxid1 is None or taxid2 is None:
+        return False
+    if rank == 'strain':
+        # Assume that the ground truth taxid is at strain level
+        return taxid1 == taxid2
+    
     if get_level(taxid1, rank) is None or get_level(taxid2, rank) is None:
         return False
     return get_level(taxid1, rank) == get_level(taxid2, rank)
